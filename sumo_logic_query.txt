@@ -1,0 +1,6 @@
+_sourceCategory=prod/api
+| where endpoint="/api/data"
+| where response_time > 3000
+| timeslice 10m
+| count by _timeslice
+| where _count > 5
